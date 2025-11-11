@@ -6,22 +6,33 @@
 /*   By: sksioui <sksioui@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 19:27:49 by sksioui           #+#    #+#             */
-/*   Updated: 2025/11/06 16:00:44 by sksioui          ###   ########.fr       */
+/*   Updated: 2025/11/11 10:17:43 by sksioui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int	convert_hex(unsigned long n)
+{
+	int		count;
+	char	*base16;
+
+	base16 = "0123456789abcdef";
+	count = 0;
+	if (n >= 16)
+		count += convert_hex(n / 16);
+	count += ft_print_char(base16[n % 16]);
+	return (count);
+}
+
 int	ft_print_ptr(void *ptr)
 {
 	int				count;
-	unsigned long	adr;
 
 	if (!ptr)
 		return (ft_print_str("(nil)"));
-	adr = (unsigned long)ptr;
 	count = 0;
 	count += ft_print_str("0x");
-	count += ft_print_hex(adr, 'x');
+	count += convert_hex((unsigned long)ptr);
 	return (count);
 }

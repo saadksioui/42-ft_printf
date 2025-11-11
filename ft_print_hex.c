@@ -6,13 +6,13 @@
 /*   By: sksioui <sksioui@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 19:27:34 by sksioui           #+#    #+#             */
-/*   Updated: 2025/11/07 22:18:03 by sksioui          ###   ########.fr       */
+/*   Updated: 2025/11/11 10:18:04 by sksioui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_hex(unsigned long n, char b)
+int	ft_print_hex(unsigned int n, char b)
 {
 	int		count;
 	char	*base16;

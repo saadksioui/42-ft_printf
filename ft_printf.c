@@ -6,7 +6,7 @@
 /*   By: sksioui <sksioui@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 13:44:30 by sksioui           #+#    #+#             */
-/*   Updated: 2025/11/08 14:59:41 by sksioui          ###   ########.fr       */
+/*   Updated: 2025/11/10 09:35:05 by sksioui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	mandatory_specifier(char spec)
 {
-	if (spec == 'c' || spec == 's' || spec == '%' || spec == 'd' || spec == 'i' || spec == 'u' || spec == 'x' || spec == 'X' || spec == 'p')
+	if (spec == 'c' || spec == 's' || spec == '%' || spec == 'd' || spec == 'i'
+		|| spec == 'u' || spec == 'x' || spec == 'X' || spec == 'p')
 		return (1);
 	return (0);
 }
@@ -48,9 +49,10 @@ int	ft_printf(const char *format, ...)
 	va_start(args, format);
 	i = 0;
 	cc = 0;
-	while (format[i]) 
+	while (format[i])
 	{
-		if (format[i] == '%' && mandatory_specifier(format[i + 1]))
+		if (format[i] == '%' && format[i + 1]
+			&& mandatory_specifier(format[i + 1]))
 		{
 			cc += ft_find_specifier(args, format[i + 1]);
 			i++;
